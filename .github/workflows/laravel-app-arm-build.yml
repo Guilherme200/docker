@@ -16,7 +16,8 @@ jobs:
       - name: Build for ARM
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./laravel/php8-2/app
+          file: ./Dockerfile
           push: false # muda pra true se quiser enviar
           platforms: linux/arm64
           tags: matoso30/laravel-app:8.2-arm
