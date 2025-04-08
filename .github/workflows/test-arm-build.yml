@@ -1,0 +1,22 @@
+# .github/workflows/test-arm-build.yml
+name: Test ARM Build
+
+on:
+  workflow_dispatch: # Habilita botão "Run workflow" no GitHub
+
+jobs:
+  build-arm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build for ARM
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false # muda pra true se quiser enviar
+          platforms: linux/arm64
+          tags: matoso30/laravel-app:8.2-arm

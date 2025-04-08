@@ -38,7 +38,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY nginx.conf /etc/nginx/sites-available/default
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
