@@ -1,5 +1,5 @@
-# .github/workflows/test-arm-build.yml
-name: Test ARM Build
+# .github/workflows/laravel-app-arm-build.yml
+name: Build Laravel App ARM
 
 on:
   workflow_dispatch: # Habilita botão "Run workflow" no GitHub
