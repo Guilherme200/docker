@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM arm64v8/php:8.2-fpm
 
 WORKDIR /app
 
@@ -50,6 +50,6 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["php-fpm"]
 
 EXPOSE 9000
