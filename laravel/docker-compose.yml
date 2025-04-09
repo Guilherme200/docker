@@ -1,0 +1,14 @@
+volumes:
+  app-postgres-data:
+    driver: local
+
+services:
+  back:
+    container_name: docker-app
+    build: php8-2/app
+    ports:
+      - 81:80
+
+  worker:
+    container_name: docker-worker
+    build: php8-2/worker
