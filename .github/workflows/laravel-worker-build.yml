@@ -1,0 +1,29 @@
+# .github/workflows/laravel-app-build.yml
+name: Build Laravel Worker ARM
+
+on:
+  workflow_dispatch: # Habilita botão "Run workflow" no GitHub
+
+jobs:
+  build-arm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build for ARM
+        uses: docker/build-push-action@v5
+        with:
+          context: ./laravel/php8-2/worker
+          file: ./laravel/php8-2/worker/Dockerfile
+          push: true
+          platforms: linux/arm64
+          tags: matoso30/laravel-worker:8.2
