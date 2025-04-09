@@ -15,11 +15,11 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir -p /app/storage/logs
 
-COPY horizon.conf /etc/supervisor/conf.d/horizon.conf
+COPY ./horizon.conf /etc/supervisor/conf.d/horizon.conf
 
 RUN echo "* * * * * php /app/artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab
 
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
