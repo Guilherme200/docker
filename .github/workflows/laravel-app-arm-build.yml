@@ -24,6 +24,6 @@ jobs:
         with:
           context: ./laravel/php8-2-arm/app
           file: ./laravel/php8-2-arm/app/Dockerfile
-          push: false
+          push: true
           platforms: linux/arm64
           tags: matoso30/laravel-app:8.2-arm
